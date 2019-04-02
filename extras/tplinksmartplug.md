@@ -1,18 +1,18 @@
 ---
 layout: plugin
 
-id: tplinksmartplug
-title: OctoPrint-TPLinkSmartplug
-description: Simple plugin to control TP-Link Smartplug
+id: tplinksmartbulb
+title: OctoPrint-TPLinkSmartbulb
+description: Simple plugin to control TP-Link Smartbulb
 author: jneilliii
 license: AGPLv3
 
 # TODO
 date: today's date in format YYYY-MM-DD, e.g. 2015-04-21
 
-homepage: https://github.com/jneilliii/OctoPrint-TPLinkSmartplug
-source: https://github.com/jneilliii/OctoPrint-TPLinkSmartplug
-archive: https://github.com/jneilliii/OctoPrint-TPLinkSmartplug/archive/master.zip
+homepage: https://github.com/jneilliii/OctoPrint-TPLinkSmartbulb
+source: https://github.com/jneilliii/OctoPrint-TPLinkSmartbulb
+archive: https://github.com/jneilliii/OctoPrint-TPLinkSmartbulb/archive/master.zip
 
 # TODO
 # Set this to true if your plugin uses the dependency_links setup parameter to include
@@ -86,4 +86,4 @@ compatibility:
 ---
 
 **TODO**: Longer description of your plugin, configuration examples etc. This part will be visible on the page at
-http://plugins.octoprint.org/plugin/tplinksmartplug/
+http://plugins.octoprint.org/plugin/tplinksmartbulb/

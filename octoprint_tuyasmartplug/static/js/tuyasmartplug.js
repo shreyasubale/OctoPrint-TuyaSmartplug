@@ -1,23 +1,23 @@
 /*
- * View model for OctoPrint-TuyaSmartplug
+ * View model for OctoPrint-TuyaSmartbulb
  *
  * Author: ziirish
  * License: AGPLv3
  */
 $(function() {
-    function tuyasmartplugViewModel(parameters) {
+    function tuyasmartbulbViewModel(parameters) {
         var self = this;
 
         self.settings = parameters[0];
 		self.loginState = parameters[1];
 
-		self.arrSmartplugs = ko.observableArray();
+		self.arrSmartbulbs = ko.observableArray();
 		self.isPrinting = ko.observable(false);
 		self.selectedPlug = ko.observable();
 		self.processing = ko.observableArray([]);
 
 		self.onBeforeBinding = function() {
-			self.arrSmartplugs(self.settings.settings.plugins.tuyasmartplug.arrSmartplugs());
+			self.arrSmartbulbs(self.settings.settings.plugins.tuyasmartbulb.arrSmartbulbs());
         }
 
 		self.onAfterBinding = function() {
@@ -25,7 +25,7 @@ $(function() {
 		}
 
         self.onEventSettingsUpdated = function(payload) {
-			self.arrSmartplugs(self.settings.settings.plugins.tuyasmartplug.arrSmartplugs());
+			self.arrSmartbulbs(self.settings.settings.plugins.tuyasmartbulb.arrSmartbulbs());
 		}
 
 		self.onEventPrinterStateChanged = function(payload) {
@@ -72,20 +72,20 @@ $(function() {
 									'useCountdownRules':ko.observable(false),
 									'countdownOnDelay':ko.observable(0),
 									'countdownOffDelay':ko.observable(0)});
-			self.settings.settings.plugins.tuyasmartplug.arrSmartplugs.push(self.selectedPlug());
+			self.settings.settings.plugins.tuyasmartbulb.arrSmartbulbs.push(self.selectedPlug());
 			$("#TuyaPlugEditor").modal("show");
 		}
 
 		self.removePlug = function(row) {
-			self.settings.settings.plugins.tuyasmartplug.arrSmartplugs.remove(row);
+			self.settings.settings.plugins.tuyasmartbulb.arrSmartbulbs.remove(row);
 		}
 
 		self.onDataUpdaterPluginMessage = function(plugin, data) {
-            if (plugin != "tuyasmartplug") {
+            if (plugin != "tuyasmartbulb") {
                 return;
             }
 
-			plug = ko.utils.arrayFirst(self.settings.settings.plugins.tuyasmartplug.arrSmartplugs(),function(item){
+			plug = ko.utils.arrayFirst(self.settings.settings.plugins.tuyasmartbulb.arrSmartbulbs(),function(item){
 				return item.label() === data.label;
 				}) || {'label':data.label,'currentState':'unknown','btnColor':'#808080'};
 
@@ -98,8 +98,8 @@ $(function() {
 						break;
 					default:
 						new PNotify({
-							title: 'Tuya Smartplug Error',
-							text: 'Status ' + plug.currentState() + ' for ' + plug.ip() + '. Double check IP Address\\Hostname in tuyasmartplug Settings.',
+							title: 'Tuya Smartbulb Error',
+							text: 'Status ' + plug.currentState() + ' for ' + plug.ip() + '. Double check IP Address\\Hostname in tuyasmartbulb Settings.',
 							type: 'error',
 							hide: true
 							});
@@ -132,7 +132,7 @@ $(function() {
 
 		self.sendTurnOn = function(data) {
             $.ajax({
-                url: API_BASEURL + "plugin/tuyasmartplug",
+                url: API_BASEURL + "plugin/tuyasmartbulb",
                 type: "POST",
                 dataType: "json",
                 data: JSON.stringify({
@@ -144,11 +144,11 @@ $(function() {
         };
 
     	self.turnOff = function(data) {
-			if((data.displayWarning() || (self.isPrinting() && data.warnPrinting())) && !$("#tuyasmartplugWarning").is(':visible')){
+			if((data.displayWarning() || (self.isPrinting() && data.warnPrinting())) && !$("#tuyasmartbulbWarning").is(':visible')){
 				self.selectedPlug(data);
-				$("#tuyasmartplugWarning").modal("show");
+				$("#tuyasmartbulbWarning").modal("show");
 			} else {
-				$("#tuyasmartplugWarning").modal("hide");
+				$("#tuyasmartbulbWarning").modal("hide");
 /* 				if(data.sysCmdOff()){
 					setTimeout(function(){self.sysCommand(data.sysRunCmdOff())},data.sysCmdOffDelay()*1000);
 				} */
@@ -158,7 +158,7 @@ $(function() {
 
 		self.sendTurnOff = function(data) {
 			$.ajax({
-			url: API_BASEURL + "plugin/tuyasmartplug",
+			url: API_BASEURL + "plugin/tuyasmartbulb",
 			type: "POST",
 			dataType: "json",
 			data: JSON.stringify({
@@ -171,7 +171,7 @@ $(function() {
 
 		self.checkStatus = function(plugLabel) {
             $.ajax({
-                url: API_BASEURL + "plugin/tuyasmartplug",
+                url: API_BASEURL + "plugin/tuyasmartbulb",
                 type: "POST",
                 dataType: "json",
                 data: JSON.stringify({
@@ -186,7 +186,7 @@ $(function() {
 
 		self.disconnectPrinter = function() {
             $.ajax({
-                url: API_BASEURL + "plugin/tuyasmartplug",
+                url: API_BASEURL + "plugin/tuyasmartbulb",
                 type: "POST",
                 dataType: "json",
                 data: JSON.stringify({
@@ -198,7 +198,7 @@ $(function() {
 
 		self.connectPrinter = function() {
             $.ajax({
-                url: API_BASEURL + "plugin/tuyasmartplug",
+                url: API_BASEURL + "plugin/tuyasmartbulb",
                 type: "POST",
                 dataType: "json",
                 data: JSON.stringify({
@@ -210,7 +210,7 @@ $(function() {
 
 /* 		self.sysCommand = function(sysCmd) {
             $.ajax({
-                url: API_BASEURL + "plugin/tuyasmartplug",
+                url: API_BASEURL + "plugin/tuyasmartbulb",
                 type: "POST",
                 dataType: "json",
                 data: JSON.stringify({
@@ -222,26 +222,26 @@ $(function() {
 		} */
 
 		self.checkStatuses = function() {
-			ko.utils.arrayForEach(self.settings.settings.plugins.tuyasmartplug.arrSmartplugs(),function(item){
+			ko.utils.arrayForEach(self.settings.settings.plugins.tuyasmartbulb.arrSmartbulbs(),function(item){
 				if(item.label() !== "") {
 					console.log("checking " + item.label())
 					self.checkStatus(item.label());
 				}
 			});
-			if (self.settings.settings.plugins.tuyasmartplug.pollingEnabled()) {
-				setTimeout(function() {self.checkStatuses();}, (parseInt(self.settings.settings.plugins.tuyasmartplug.pollingInterval(),10) * 60000));
+			if (self.settings.settings.plugins.tuyasmartbulb.pollingEnabled()) {
+				setTimeout(function() {self.checkStatuses();}, (parseInt(self.settings.settings.plugins.tuyasmartbulb.pollingInterval(),10) * 60000));
 			};
         };
     }
 
     // view model class, parameters for constructor, container to bind to
     OCTOPRINT_VIEWMODELS.push([
-        tuyasmartplugViewModel,
+        tuyasmartbulbViewModel,
 
         // e.g. loginStateViewModel, settingsViewModel, ...
         ["settingsViewModel","loginStateViewModel"],
 
-        // "#navbar_plugin_tuyasmartplug","#settings_plugin_tuyasmartplug"
-        ["#navbar_plugin_tuyasmartplug","#settings_plugin_tuyasmartplug"]
+        // "#navbar_plugin_tuyasmartbulb","#settings_plugin_tuyasmartbulb"
+        ["#navbar_plugin_tuyasmartbulb","#settings_plugin_tuyasmartbulb"]
     ]);
 });

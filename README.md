@@ -1,6 +1,6 @@
-# OctoPrint-TuyaSmartplug
+# OctoPrint-TuyaSmartbulb
 
-Work based on [OctoPrint-TPLinkSmartplug](https://github.com/jneilliii/OctoPrint-TPLinkSmartplug) and [python-tuya](https://github.com/clach04/python-tuya).
+Work based on [OctoPrint-TPLinkSmartbulb](https://github.com/jneilliii/OctoPrint-TPLinkSmartbulb) and [python-tuya](https://github.com/clach04/python-tuya).
 This plugin controlls [Tuya-based](https://en.tuya.com/) SmartPlugs.
 
 ##  Screenshots
@@ -15,7 +15,7 @@ This plugin controlls [Tuya-based](https://en.tuya.com/) SmartPlugs.
 Install via the bundled [Plugin Manager](https://github.com/foosel/OctoPrint/wiki/Plugin:-Plugin-Manager)
 or manually using this URL:
 
-    https://github.com/ziirish/OctoPrint-TuyaSmartplug/archive/master.zip
+    https://github.com/ziirish/OctoPrint-TuyaSmartbulb/archive/master.zip
 
 
 ## Preparatory work
@@ -26,7 +26,7 @@ in the [python-tuya wiki](https://github.com/clach04/python-tuya/wiki).
 
 ## Configuration
 
-Once installed go into settings and enter the ip address for your TP-Link Smartplug device. Adjust additional settings as needed.
+Once installed go into settings and enter the ip address for your TP-Link Smartbulb device. Adjust additional settings as needed.
 
 ## Settings Explained
 - **IP**

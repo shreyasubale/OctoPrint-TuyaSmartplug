@@ -6,6 +6,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [0.1.0] - 2018-10-21
 ### Added
-- Initial release based on [OctoPrint-TPLinkSmartplug by jneilliii](https://github.com/jneilliii/OctoPrint-TPLinkSmartplug).
+- Initial release based on [OctoPrint-TPLinkSmartbulb by jneilliii](https://github.com/jneilliii/OctoPrint-TPLinkSmartbulb).
 
-[0.1.0]: https://github.com/ziirish/OctoPrint-TuyaSmartplug/tree/0.1.0
+[0.1.0]: https://github.com/ziirish/OctoPrint-TuyaSmartbulb/tree/0.1.0

@@ -1,12 +1,12 @@
-#navbar_plugin_tuyasmartplug > a > i.on {
+#navbar_plugin_tuyasmartbulb > a > i.on {
 	color: #00FF00 !important;
 }
 
-#navbar_plugin_tuyasmartplug > a > i.off {
+#navbar_plugin_tuyasmartbulb > a > i.off {
 	color: #FF0000 !important;
 }
 
-#navbar_plugin_tuyasmartplug > a > i.unknown {
+#navbar_plugin_tuyasmartbulb > a > i.unknown {
 	color: #808080 !important;
 }
 

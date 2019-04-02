@@ -1,5 +1,5 @@
-<h4>Tuya Smartplug Settings</h4>
-<table class="table table-condensed" data-bind='visible: settings.settings.plugins.tuyasmartplug.arrSmartplugs().length > 0'>
+<h4>Tuya Smartbulb Settings</h4>
+<table class="table table-condensed" data-bind='visible: settings.settings.plugins.tuyasmartbulb.arrSmartbulbs().length > 0'>
 	<thead>
 		<tr>
 			<td>{{ _('Plug') }}</td>
@@ -7,7 +7,7 @@
 			<td style="text-align:center"><a href="#" class="btn btn-mini icon-plus" data-bind="click: addPlug"></a></td>
 		</tr>
 	</thead>
-	<tbody data-bind="foreach: settings.settings.plugins.tuyasmartplug.arrSmartplugs">
+	<tbody data-bind="foreach: settings.settings.plugins.tuyasmartbulb.arrSmartbulbs">
 		<tr data-bind="attr: {title: label}">
 			<td><span data-bind="text: label" /></td>
 			<td style="text-align:center">
@@ -21,7 +21,7 @@
 			<td style="text-align:center">
 				<div class="btn-group">
 					<a href="#" class="btn btn-mini icon-pencil" data-bind="click: $root.editPlug"></a>
-					<a href="#" class="btn btn-mini icon-trash" data-bind="click: $root.removePlug, visible: $root.settings.settings.plugins.tuyasmartplug.arrSmartplugs().length > 1"></a>
+					<a href="#" class="btn btn-mini icon-trash" data-bind="click: $root.removePlug, visible: $root.settings.settings.plugins.tuyasmartbulb.arrSmartbulbs().length > 1"></a>
 				</div>
 				</td>
 		</tr>
@@ -31,28 +31,28 @@
 <div class="control-group">
 	<div class="controls">
 		<label class="checkbox">
-		<input type="checkbox" data-bind="checked: settings.settings.plugins.tuyasmartplug.debug_logging"> Enable debug logging.
+		<input type="checkbox" data-bind="checked: settings.settings.plugins.tuyasmartbulb.debug_logging"> Enable debug logging.
 		</label>
 	</div>
 </div>
 <div class="control-group">
 	<div class="controls">
 		<label class="checkbox">
-		<input type="checkbox" data-bind="checked: settings.settings.plugins.tuyasmartplug.pollingEnabled" /> Enable polling of status.
+		<input type="checkbox" data-bind="checked: settings.settings.plugins.tuyasmartbulb.pollingEnabled" /> Enable polling of status.
 		</label>
 	</div>
 </div>
-<div class="control-group" data-bind="visible: settings.settings.plugins.tuyasmartplug.pollingEnabled">
+<div class="control-group" data-bind="visible: settings.settings.plugins.tuyasmartbulb.pollingEnabled">
 	<div class="controls">
 		<label class="control-label">{{ _('Minutes between checks') }}</label>
-		<input type="number" min="0" data-bind="value: settings.settings.plugins.tuyasmartplug.pollingInterval" />
+		<input type="number" min="0" data-bind="value: settings.settings.plugins.tuyasmartbulb.pollingInterval" />
 	</div>
 </div>
 
 <div id="TuyaPlugEditor" data-bind="with: selectedPlug" class="modal hide fade">
 	<div class="modal-header">
 		<a href="#" class="close" data-dismiss="modal" aria-hidden="true">&times;</a>
-		<h3>Tuya Smartplug Editor</h3>
+		<h3>Tuya Smartbulb Editor</h3>
 	</div>
 	<div class="modal-body">
 		<table class="table table-condensed">
